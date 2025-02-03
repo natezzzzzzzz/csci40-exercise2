@@ -43,7 +43,8 @@ class Fraction(object):
                 self.denominator = denominator
 
     def gcd(a, b):
-        #TODO
+        
+        # consider using Euclidian Algorithm in getting this
         pass
 
     def get_numerator(self):
