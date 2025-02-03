@@ -54,18 +54,20 @@ class Fraction(object):
     def get_numerator(self):
 
         sign = ""
-        if (self.numerator < 0 or self.denominator < 0) and not (self.denominator < 0 and self.numerator < 0) :
+        if (self.numerator < 0) ^ (self.denominator < 0):
             sign = "-"
-        return sign + str(self.numerator / self.gcd(self.numerator, self.denominator))
+        if self.numerator < 0:
+            self.numerator *= -1
+        return sign + str(self.numerator // self.gcd(self.numerator, self.denominator))    
 
     def get_denominator(self):
-
+        
         if self.denominator < 0:
-            self.denominator= -1
-        return str(self.denominator / self.gcd(self.numerator,self.denominator))
-
+            self.denominator *= -1
+        return str(self.denominator // self.gcd(self.numerator,self.denominator))
+    
     def get_fraction(self):
 
         if self.numerator == 0:
-            return 0
-        return self.get_numerator() + "/" + self.get_denominator()
+            return '0'
+        return self.get_numerator() + "/" + self.get_denominator()   
