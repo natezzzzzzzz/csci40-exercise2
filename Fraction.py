@@ -26,7 +26,10 @@ class Fraction(object):
                 if not termsList[1].strip("-").isdigit() or isinstance(termsList[1], float):
                         self.denominator = 1
                 else:
-                    self.denominator = int(termsList[1]) 
+                    if termsList[1] == 0:
+                        raise ZeroDivisionError
+                    else:
+                        self.denominator = int(termsList[1]) 
 
             else:
                 self.numerator = 0
@@ -40,7 +43,12 @@ class Fraction(object):
                 self.denominator = 1
             else:
                 self.numerator = numerator
-                self.denominator = denominator
+
+                if denominator == 0:
+                        raise ZeroDivisionError
+                else:
+                    self.denominator = denominator 
+
 
     @staticmethod
     def gcd(a, b):
