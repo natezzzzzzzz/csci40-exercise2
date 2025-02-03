@@ -1,6 +1,6 @@
 class Fraction(object):
 
-    def init(self, numerator=0, denominator=1):
+    def __init__(self, numerator=0, denominator=1):
 
         # STRING INPUTS PROCESSED HERE
         if isinstance(numerator, str):
@@ -52,13 +52,22 @@ class Fraction(object):
         return abs(a)
 
     def get_numerator(self):
-        #TODO
-        pass
+
+        sign = ""
+        if (self.numerator < 0) ^ (self.denominator < 0):
+            sign = "-"
+        if self.numerator < 0:
+            self.numerator *= -1
+        return sign + str(self.numerator // self.gcd(self.numerator, self.denominator))    
 
     def get_denominator(self):
-        #TODO
-        pass
-
+        
+        if self.denominator < 0:
+            self.denominator *= -1
+        return str(self.denominator // self.gcd(self.numerator,self.denominator))
+    
     def get_fraction(self):
-        #TODO
-        pass
+
+        if self.numerator == 0:
+            return '0'
+        return self.get_numerator() + "/" + self.get_denominator()   
