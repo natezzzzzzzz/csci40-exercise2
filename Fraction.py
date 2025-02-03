@@ -32,12 +32,13 @@ class Fraction(object):
 
         # NON-STRING INPUTS PROCESSED HERE
         else:
-            
-            # check if input is float or integer
-            # if float, set self.numerator and self.denominator to default value 0/1
-            # if integer, set self.numerator and self.denominator to parameter values
-            
-            pass
+            # checks if numerator or denominator is a float and sets to default 0/1 if yes
+            if isinstance(numerator, float) or isinstance(denominator, float):
+                self.numerator = 0
+                self.denominator = 1
+            else:
+                self.numerator = numerator
+                self.denominator = denominator
 
     def gcd(a, b):
         #TODO
